@@ -13,7 +13,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {   $usuario=Usuario::all();
-        return view('Usuario.index',compact('usuario'));
+        return view('Usuario.index',compact('Usuario'));
     }
 
     /**
