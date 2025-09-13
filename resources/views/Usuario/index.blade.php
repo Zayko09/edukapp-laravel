@@ -9,11 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                <h1>Listado de Usuario</h1>
-                <ul>
-                @foreach($Usuario as $emp)
-                 <li> {{$emp->first_name}} </li>  
-                @endforeach
-                </ul>
+              
             </div>
         </div>
     </div>
