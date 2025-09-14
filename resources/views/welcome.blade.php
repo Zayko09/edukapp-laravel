@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <<<<<<< HEAD
+=======
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+>>>>>>> parent of 108c7db (y)
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,15 +22,15 @@
             --shadow-light: rgba(0, 0, 0, 0.1);
             --shadow-dark: rgba(255, 255, 255, 0.1);
         }
-
-        body {
-            font-family: 'Nunito', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-light);
-        }
-
-        a {
-            color: var(--color-link);
+        
+        @media (prefers-color-scheme: dark) {
+            .dark {
+                background-color: var(--bg-dark);
+                color: var(--text-dark);
+            }
+            .dark a {
+                color: var(--color-link);
+            }
         }
     </style>
     @vite('resources/css/app.css')
@@ -36,7 +40,7 @@
         @if (Route::has('login'))
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline dark:text-gray-500">Dashboard</a>
+                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline dark:text-gray-500">Home</a>
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 underline dark:text-gray-500">Login</a>
                     @if (Route::has('register'))
@@ -45,12 +49,12 @@
                 @endauth
             </div>
         @endif
-        
+    
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                 <img src="{{ asset('img/laravel-logo.svg') }}" alt="Laravel Logo" class="h-16">
             </div>
-
+    
             <div class="mt-8 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700">
@@ -64,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-
+    
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                         <div class="flex items-center">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M15 10l4.72-4.72a.75.75 0 011.06 1.06L18 12l2.78 2.78a.75.75 0 01-1.06 1.06l-4.72-4.72z"></path></svg>
@@ -76,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-
+    
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700">
                         <div class="flex items-center">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"></path></svg>
@@ -88,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-
+    
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                         <div class="flex items-center">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm0 6a2 2 0 11-4 0 2 2 0 014 0zm0-12a2 2 0 11-4 0 2 2 0 014 0zm10 6a2 2 0 11-4 0 2 2 0 014 0zm0 6a2 2 0 11-4 0 2 2 0 014 0zM17 12a2 2 0 11-4 0 2 2 0 014 0zm-10 0a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
@@ -216,7 +220,7 @@
                 </div>
 <<<<<<< HEAD
             </div>
-
+    
             <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 sm:text-left">
                     <div class="flex items-center">
@@ -228,7 +232,7 @@
                         </a>
                     </div>
                 </div>
-
+    
                 <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
 =======
