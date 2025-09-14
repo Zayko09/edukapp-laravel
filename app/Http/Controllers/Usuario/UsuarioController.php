@@ -6,15 +6,15 @@ use App\Models\Usuario;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class usuarioController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {  
-         $Usuario = usuario::all();
-        return view('usuario.index',compact('usuario'));
+         $Usuario = Usuario::all();
+        return view('Usuario.index',compact('Usuario'));
     }
 
     /**
