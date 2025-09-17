@@ -12,8 +12,8 @@ class UsuarioController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   $usuario=Usuario::all();
-        return view('Usuario.index',compact('Usuario'));
+    {   $usuarios=Usuario::all();
+        return view('Usuario.index',compact('Usuarios'));
     }
 
     /**

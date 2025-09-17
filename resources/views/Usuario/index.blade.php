@@ -1,30 +1,35 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Usuario') }}
-        </h2>
-    </x-slot>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
 
-
-
-
-    
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-               <h1>Listado de Usuario</h1>
-<<<<<<< HEAD
-              
-=======
-               @dd($Usuario);
-                <ul>
-                @foreach($Usuario as $emp)
-                 <li> {{$emp->first_name}} </li>  
+    @if($usuarios->isEmpty())
+        <p>No hay usuarios registrados.</p>
+    @else
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    </tr>
+            </thead>
+            <tbody>
+                @foreach($usuarios as $usuario)
+                    <tr>
+                        <td>{{ $usuario->id }}</td>
+                        <td>{{ $usuario->name }}</td>
+                        <td>{{ $usuario->email }}</td>
+                        </tr>
                 @endforeach
-                </ul>
->>>>>>> parent of b2f34da (okay)
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+            </tbody>
+        </table>
+    @endif
+</body>
+</html>
