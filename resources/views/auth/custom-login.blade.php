@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear una Cuenta - Eduk APP</title>
-    <link rel="icon" href="{{ asset('images/logoEdukapp.png') }}" type="image/png">
+    <title>Iniciar Sesión - Eduk APP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,13 +54,6 @@
         .input-group input:focus, .input-group select:focus {
             border-color: #5cb85c;
         }
-        .error-message {
-            color: red;
-            font-size: 0.9em;
-            margin-top: 5px;
-            text-align: left;
-            padding-left: 20px;
-        }
         button {
             background-color: #5cb85c;
             color: white;
@@ -71,12 +63,11 @@
             font-size: 1.2em;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         button:hover {
             background-color: #4cae4c;
         }
-
         .secondary-link {
             display: block;
             margin-top: 20px;
@@ -84,7 +75,6 @@
             text-decoration: none;
             font-size: 1em;
         }
-
         .secondary-link:hover {
             text-decoration: underline;
         }
@@ -134,42 +124,33 @@
 <body>
     <div class="left-panel">
         <div class="eduk-app-logo">
-   <img src="{{ asset('images/logoEdukapp.png') }}"  style="width: 100%; height: 100%; object-fit: contain;">
+            <img src="{{ asset('images/logoEdukapp.png') }}"  style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <div class="form-container">
-            <h1>CREA UNA CUENTA</h1>
-            <form id="registrationForm" method="POST" action="{{ route('register') }}">
+            <h1>INICIAR SESIÓN</h1>
+            
+            @if (session('status'))
+                <div class="mb-4 font-medium text-sm text-green-600">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-group">
-                    <input type="text" name="name" placeholder="NOMBRE DE USUARIO" value="{{ old('name') }}" required autofocus autocomplete="name">
+                    <input type="email" name="email" placeholder="CORREO ELECTRONICO" value="{{ old('email') }}" required autofocus>
                 </div>
                 <div class="input-group">
-                    <input type="email" name="email" placeholder="CORREO ELECTRONICO" value="{{ old('email') }}" required autocomplete="username">
+                    <input type="password" name="password" placeholder="CONTRASEÑA" required autocomplete="current-password">
                 </div>
-                <!-- <div class="input-group">
-                    <select id="documentType">
-                        <option value="">TIPO DE DOCUMENTO</option>
-                        <option value="CC">Cédula de Ciudadanía</option>
-                        <option value="TI">Tarjeta de Identidad</option>
-                        <option value="CE">Cédula de Extranjería</option>
-                    </select>
-                </div> -->
-                <div class="input-group">
-                    <input type="password" name="password" placeholder="CONTRASEÑA" required autocomplete="new-password">
-                </div>
-                <div class="input-group">
-                    <input type="password" name="password_confirmation" placeholder="REPETIR LA CONTRASEÑA" required autocomplete="new-password">
-                </div>
-                <button type="submit">CREAR</button>
+                <button type="submit">INICIAR SESIÓN</button>
             </form>
-            <a href="{{ route('login') }}" class="secondary-link">¿Ya tienes una cuenta? Inicia sesión</a>
+            <a href="{{ url('/registro') }}" class="secondary-link">¿No tienes una cuenta? Regístrate</a>
         </div>
     </div>
     <div class="right-panel">
         <img src="{{ asset('images/LOGO_SENA.png') }}" alt="SENA Logo" class="sena-logo">
         <img src="{{ asset('images/re.png') }}" alt="Illustration" class="illustration">
     </div>
-
-    <script src="validation.js"></script>
 </body>
 </html>
