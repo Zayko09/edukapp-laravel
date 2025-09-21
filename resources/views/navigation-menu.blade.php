@@ -20,7 +20,27 @@
                     <x-nav-link href="{{ route('Usuario.index') }}" :active="request()->routeIs('usuario.*')">
                         {{ __('Usuario') }}
                     </x-nav-link>
-                </div> 
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('fichas.index') }}" :active="request()->routeIs('fichas.*')">
+                        {{ __('Fichas') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('sedes.index') }}" :active="request()->routeIs('sedes.*')">
+                        {{ __('Sedes') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('carnets.index') }}" :active="request()->routeIs('carnets.*')">
+                        {{ __('Carnets') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('registros_acceso.index') }}" :active="request()->routeIs('registros_acceso.*')">
+                        {{ __('Registro de Acceso') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -146,6 +166,21 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('Usuario.index') }}" :active="request()->routeIs('usuario.*')">
+                {{ __('Usuario') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('fichas.index') }}" :active="request()->routeIs('fichas.*')">
+                {{ __('Fichas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('sedes.index') }}" :active="request()->routeIs('sedes.*')">
+                {{ __('Sedes') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('carnets.index') }}" :active="request()->routeIs('carnets.*')">
+                {{ __('Carnets') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('registros_acceso.index') }}" :active="request()->routeIs('registros_acceso.*')">
+                {{ __('Registro de Acceso') }}
             </x-responsive-nav-link>
         </div>
 
