@@ -12,7 +12,7 @@ class CarnetController extends Controller
      */
     public function index()
     {
-        //
+        return view('carnets.index');
     }
 
     /**
