@@ -120,11 +120,11 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('Configuracion') }}
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -141,7 +141,7 @@
 
                                 <x-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Salir') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
@@ -180,7 +180,7 @@
                 {{ __('Carnets') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('registros_acceso.index') }}" :active="request()->routeIs('registros_acceso.*')">
-                {{ __('Registro de Acceso') }}
+                {{ __(' Acceso') }}
             </x-responsive-nav-link>
         </div>
 
@@ -217,7 +217,7 @@
 
                     <x-responsive-nav-link href="{{ route('logout') }}"
                                    @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Salir') }}
                     </x-responsive-nav-link>
                 </form>
 
