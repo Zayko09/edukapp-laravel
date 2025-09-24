@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ficha;
 use Illuminate\Http\Request;
 
 class FichaController extends Controller
@@ -20,7 +21,7 @@ class FichaController extends Controller
      */
     public function create()
     {
-        //
+        return view('fichas.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class FichaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => ['required', 'string', 'max:255'],
+            'sede_id' => ['required', 'integer', 'exists:sedes,sede_id'],
+        ]);
+
+        Ficha::create([
+            'nombre' => $request->nombre,
+            'sede_id' => $request->sede_id,
+        ]);
+
+        return redirect()->route('fichas.index')->with('success', 'Ficha creada correctamente.');
     }
 
     /**

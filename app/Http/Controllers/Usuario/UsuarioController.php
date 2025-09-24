@@ -39,6 +39,7 @@ class UsuarioController extends Controller
             'numero_documento' => ['required', 'string', 'max:255', 'unique:usuarios'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'activo' => ['required', 'boolean'],
+            'sede_id' => ['required', 'integer', 'exists:sedes,sede_id'],
         ]);
 
         Usuario::create([
@@ -51,6 +52,7 @@ class UsuarioController extends Controller
             'salt_contrasena' => '' ,// Not needed with modern hashing
             'activo' => $request->activo,
             'fecha_creacion' => now(), // Since timestamps are false
+            'sede_id' => $request->sede_id,
         ]);
 
         return redirect()->route('Usuario.index')->with('success', 'Usuario creado correctamente.');

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Usuario\UsuarioController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JornadaController;
 
