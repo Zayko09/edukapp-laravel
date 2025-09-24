@@ -79,7 +79,11 @@ class UsuarioController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        return view('Usuario.edit', compact('usuario'));
+        $roles = Role::all();
+        $sedes = Sede::all();
+        $jornadas = Jornada::all();
+        $fichas = Ficha::all();
+        return view('Usuario.edit', compact('usuario', 'roles', 'sedes', 'jornadas', 'fichas'));
     }
 
     /**
