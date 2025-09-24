@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\UsuariosController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JornadaController;
+use App\Http\Controllers\Usuario\UsuarioController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -14,7 +14,7 @@ Route::get('/registro', function () {
 });
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])
-->resource('Usuario',UsuarioController::class)
+->resource('Usuario', UsuarioController::class)
 ->names('Usuario');
 
 Route::middleware([

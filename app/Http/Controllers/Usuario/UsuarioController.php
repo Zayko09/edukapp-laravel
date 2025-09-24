@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Usuario;
 
 use App\Models\Usuario;
 use App\Http\Controllers\Controller;
+use App\Models\Ficha;
+use App\Models\Jornada;
+use App\Models\Role;
+use App\Models\Sede;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,7 +28,11 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('Usuario.create');
+        $roles = Role::all();
+        $sedes = Sede::all();
+        $jornadas = Jornada::all();
+        $fichas = Ficha::all();
+        return view('Usuario.create', compact('roles', 'sedes', 'jornadas', 'fichas'));
     }
 
     /**
