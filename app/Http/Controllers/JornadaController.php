@@ -16,50 +16,42 @@ class JornadaController extends Controller
         return view('jornadas.index');
     }
 
-    public function getData(Request $request): JsonResponse
-    {
-        if ($request->ajax()) {
-            $jornadas = Jornada::select([
-                'jornada_id',
-                'nombre_jornada',
-                'created_at'
-            ])->with(['fichas:jornada_id', 'usuarios:jornada_id']);
+    public function getData(Request $request)
+{
+    if ($request->ajax()) {
+        $jornadas = Jornada::select([
+            'jornada_id',
+            'nombre_jornada',
+            'created_at',
+            'updated_at'
+        ])->get();
 
-            return DataTables::of($jornadas)
-                ->addColumn('fichas_count', function ($jornada) {
-                    return $jornada->fichas->count();
-                })
-                ->addColumn('usuarios_count', function ($jornada) {
-                    return $jornada->usuarios->count();
-                })
-                ->addColumn('acciones', function ($jornada) {
-                    $canDelete = !$jornada->hasFichas();
-                    
-                    $editBtn = '<button class="btn btn-sm btn-warning me-1" 
-                                    onclick="editJornada(' . $jornada->jornada_id . ')">
-                                    <i class="fas fa-edit"></i>
-                                </button>';
-                    
-                    $deleteBtn = $canDelete ? 
-                        '<button class="btn btn-sm btn-danger" 
-                                onclick="deleteJornada(' . $jornada->jornada_id . ')">
-                                <i class="fas fa-trash"></i>
-                            </button>' : 
-                        '<button class="btn btn-sm btn-secondary" disabled>
-                                <i class="fas fa-lock"></i>
-                            </button>';
-                    
-                    return $editBtn . $deleteBtn;
-                })
-                ->editColumn('created_at', function ($jornada) {
-                    return $jornada->created_at->format('d/m/Y H:i');
-                })
-                ->rawColumns(['acciones'])
-                ->make(true);
+        $data = [];
+        foreach ($jornadas as $jornada) {
+            $data[] = [
+                'jornada_id' => $jornada->jornada_id,
+                'nombre_jornada' => $jornada->nombre_jornada,
+                'fichas_count' => 0, // Por ahora 0, se puede conectar después
+                'usuarios_count' => 0, // Por ahora 0, se puede conectar después
+                'created_at' => $jornada->created_at ? $jornada->created_at->format('d/m/Y H:i') : 'N/A',
+                'acciones' => '
+                    <button onclick="editarJornada(' . $jornada->jornada_id . ')" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-3 rounded text-sm mr-2">
+                        ✏️ Editar
+                    </button>
+                    <button onclick="eliminarJornada(' . $jornada->jornada_id . ')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded text-sm">
+                        🗑️ Eliminar
+                    </button>
+                '
+            ];
         }
-        
-        return response()->json(['error' => 'Solicitud no válida'], 400);
+
+        return response()->json([
+            'data' => $data
+        ]);
     }
+    
+    return response()->json(['error' => 'Solicitud no válida'], 400);
+}
 
     public function store(JornadaRequest $request): JsonResponse
     {
