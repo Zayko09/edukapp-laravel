@@ -7,14 +7,14 @@
                     <div class="flex justify-between items-center">
                         <div>
                             <h2 class="text-2xl font-bold text-gray-900">
-                                🕐 Gestión de Jornadas
+                                Gestión de Jornadas
                             </h2>
                             <p class="text-gray-600 mt-1">Administra las jornadas académicas del sistema</p>
                         </div>
                         <button 
                             onclick="abrirModalCrear()"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg inline-flex items-center">
-                            ➕ Nueva Jornada
+                            class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-4">
+                            Nueva Jornada
                         </button>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
         });
 
         $(document).ready(function() {
-            console.log('🚀 Iniciando aplicación Jornadas...');
+            console.log('Iniciando aplicación Jornadas...');
             
             // Inicializar DataTable
             tabla = $('#jornadasTable').DataTable({
@@ -108,7 +108,7 @@
                     "type": "GET",
                     "dataSrc": "data",
                     "error": function(xhr, error, thrown) {
-                        console.error('❌ Error AJAX:', xhr.responseText);
+                        console.error('Error AJAX:', xhr.responseText);
                         Swal.fire('Error', 'No se pudieron cargar los datos: ' + xhr.status, 'error');
                     }
                 },
@@ -136,11 +136,11 @@
                 "order": [[1, "asc"]]
             });
             
-            console.log('✅ DataTable inicializado correctamente');
+            console.log('DataTable inicializado correctamente');
         });
 
         function abrirModalCrear() {
-            console.log('📝 Abriendo modal para crear...');
+            console.log('Abriendo modal para crear...');
             editando = false;
             document.getElementById('tituloModal').textContent = 'Nueva Jornada';
             document.getElementById('formJornada').reset();
@@ -151,7 +151,7 @@
         }
 
         function editarJornada(id) {
-            console.log('✏️ Editando jornada ID:', id);
+            console.log('Editando jornada ID:', id);
             editando = true;
             
             fetch(`{{ url('/jornadas') }}/${id}`, {
@@ -162,7 +162,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log('📄 Datos recibidos:', data);
+                console.log('Datos recibidos:', data);
                 if (data.success) {
                     document.getElementById('tituloModal').textContent = 'Editar Jornada';
                     document.getElementById('jornadaId').value = data.data.jornada_id;
@@ -175,13 +175,13 @@
                 }
             })
             .catch(error => {
-                console.error('❌ Error:', error);
+                console.error('Error:', error);
                 Swal.fire('Error', 'Error al obtener los datos', 'error');
             });
         }
 
         function eliminarJornada(id) {
-            console.log('🗑️ Eliminando jornada ID:', id);
+            console.log('Eliminando jornada ID:', id);
             
             Swal.fire({
                 title: '¿Estás seguro?',
@@ -211,7 +211,7 @@
                         }
                     })
                     .catch(error => {
-                        console.error('❌ Error:', error);
+                        console.error('Error:', error);
                         Swal.fire('Error', 'Error al eliminar', 'error');
                     });
                 }
@@ -220,7 +220,7 @@
 
         function guardarJornada(event) {
             event.preventDefault();
-            console.log('💾 Guardando jornada...');
+            console.log('Guardando jornada...');
             
             const formData = new FormData();
             formData.append('nombre_jornada', document.getElementById('nombreJornada').value);
@@ -242,7 +242,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log('📤 Respuesta:', data);
+                console.log('Respuesta:', data);
                 if (data.success) {
                     Swal.fire({
                         title: '¡Éxito!',
@@ -258,7 +258,7 @@
                 }
             })
             .catch(error => {
-                console.error('❌ Error:', error);
+                console.error('Error:', error);
                 Swal.fire('Error', 'Error al procesar la solicitud', 'error');
             });
         }

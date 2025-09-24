@@ -35,11 +35,11 @@ class JornadaController extends Controller
                 'usuarios_count' => 0, // Por ahora 0, se puede conectar después
                 'created_at' => $jornada->created_at ? $jornada->created_at->format('d/m/Y H:i') : 'N/A',
                 'acciones' => '
-                    <button onclick="editarJornada(' . $jornada->jornada_id . ')" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-3 rounded text-sm mr-2">
-                        ✏️ Editar
+                    <button onclick="editarJornada(' . $jornada->jornada_id . ')" class="bg-green-500 hover:bg-green-800 text-white font-bold py-1 px-3 rounded text-sm mr-2">
+                        Editar
                     </button>
-                    <button onclick="eliminarJornada(' . $jornada->jornada_id . ')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded text-sm">
-                        🗑️ Eliminar
+                    <button onclick="eliminarJornada(' . $jornada->jornada_id . ')" class="bg-green-500 hover:bg-green-800 text-white font-bold py-1 px-3 rounded text-sm mr-2">
+                        Eliminar
                     </button>
                 '
             ];
@@ -72,14 +72,12 @@ class JornadaController extends Controller
     }
 
     public function show(Jornada $jornada): JsonResponse
-    {
-        $jornada->load(['fichas', 'usuarios']);
-        
-        return response()->json([
-            'success' => true,
-            'data' => $jornada
-        ]);
-    }
+{
+    return response()->json([
+        'success' => true,
+        'data' => $jornada
+    ]);
+}
 
     public function update(JornadaRequest $request, Jornada $jornada): JsonResponse
     {
@@ -100,26 +98,19 @@ class JornadaController extends Controller
     }
 
     public function destroy(Jornada $jornada): JsonResponse
-    {
-        try {
-            if ($jornada->hasFichas()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'No se puede eliminar la jornada porque tiene fichas asociadas'
-                ], 400);
-            }
+{
+    try {
+        $jornada->delete();
 
-            $jornada->delete();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Jornada eliminada exitosamente'
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Error al eliminar la jornada: ' . $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Jornada eliminada exitosamente'
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Error al eliminar la jornada: ' . $e->getMessage()
+        ], 500);
     }
+}
 }
