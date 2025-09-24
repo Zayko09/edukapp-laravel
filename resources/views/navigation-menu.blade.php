@@ -41,13 +41,18 @@
                         {{ __('Acceso') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('jornadas.index') }}" :active="request()->routeIs('jornadas.*')">
+                        {{ __('Jornadas') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ms-3 relative">
-                        <x-dropdown align="right" width="60">
+                        <x-dropdown alig="right" width="60">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
@@ -181,6 +186,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('registros_acceso.index') }}" :active="request()->routeIs('registros_acceso.*')">
                 {{ __(' Acceso') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('jornadas.index') }}" :active="request()->routeIs('jornadas.*')">
+                {{ __('Jornadas') }}
             </x-responsive-nav-link>
         </div>
 

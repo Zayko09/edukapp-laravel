@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Usuario\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JornadaController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -28,4 +29,6 @@ Route::middleware([
     Route::resource('sedes', \App\Http\Controllers\SedeController::class)->names('sedes');
     Route::resource('carnets', \App\Http\Controllers\CarnetController::class)->names('carnets');
     Route::resource('registros_acceso', \App\Http\Controllers\RegistroAccesoController::class)->names('registros_acceso');
+    Route::resource('jornadas', JornadaController::class)->except(['create', 'edit']);
+    Route::get('jornadas/data', [JornadaController::class, 'getData'])->name('jornadas.data');
 });
