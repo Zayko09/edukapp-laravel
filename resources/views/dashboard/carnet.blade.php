@@ -64,7 +64,7 @@
 </head>
 <body>
 
-    <a href="{{ route('dashboard.index') }}" class="back-link">Volver al Panel</a>
+    <a href="{{ route('dashboard') }}" class="back-link">Volver al Panel</a>
 
     <div class="carnet-container">
         <div class="carnet-header">
