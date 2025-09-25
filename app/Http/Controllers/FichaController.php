@@ -25,8 +25,8 @@ class FichaController extends Controller
      */
     public function create()
     {
-        $sedes = Sede::all();
-        $jornadas = Jornada::all();
+        $sedes = Sede::all()->filter(fn($sede) => is_object($sede));
+        $jornadas = Jornada::all()->filter(fn($jornada) => is_object($jornada));
         return view('fichas.create', compact('sedes', 'jornadas'));
     }
 
@@ -55,8 +55,8 @@ class FichaController extends Controller
     public function edit(string $id)
     {
         $ficha = Ficha::findOrFail($id);
-        $sedes = Sede::all();
-        $jornadas = Jornada::all();
+        $sedes = Sede::all()->filter(fn($sede) => is_object($sede));
+        $jornadas = Jornada::all()->filter(fn($jornada) => is_object($jornada));
         return view('fichas.edit', compact('ficha', 'sedes', 'jornadas'));
     }
 

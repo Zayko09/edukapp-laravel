@@ -29,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'sede_id', // Añadir sede_id a los fillable
     ];
 
     /**
@@ -63,5 +64,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the sede associated with the user.
+     */
+    public function sede()
+    {
+        return $this->belongsTo(Sede::class, 'sede_id', 'sede_id');
     }
 }
