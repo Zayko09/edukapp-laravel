@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ficha;
+use App\Models\Sede; // Import Sede model
+use App\Models\Jornada; // Import Jornada model
+use App\Http\Requests\FichaRequest; // Import FichaRequest
 use Illuminate\Http\Request;
 
 class FichaController extends Controller
@@ -13,7 +16,8 @@ class FichaController extends Controller
      */
     public function index()
     {
-        return view('fichas.index');
+        $fichas = Ficha::all();
+        return view('fichas.index', compact('fichas'));
     }
 
     /**
@@ -21,25 +25,19 @@ class FichaController extends Controller
      */
     public function create()
     {
-        return view('fichas.create');
+        $sedes = Sede::all();
+        $jornadas = Jornada::all();
+        return view('fichas.create', compact('sedes', 'jornadas'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FichaRequest $request) // Use FichaRequest for validation
     {
-        $request->validate([
-            'nombre' => ['required', 'string', 'max:255'],
-            'sede_id' => ['required', 'integer', 'exists:sedes,sede_id'],
-        ]);
+        Ficha::create($request->validated()); // Use validated data
 
-        Ficha::create([
-            'nombre' => $request->nombre,
-            'sede_id' => $request->sede_id,
-        ]);
-
-        return redirect()->route('fichas.index')->with('success', 'Ficha creada correctamente.');
+        return redirect()->route('fichas.index')->with('success', 'Ficha creada exitosamente.');
     }
 
     /**
@@ -47,7 +45,8 @@ class FichaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $ficha = Ficha::findOrFail($id);
+        return view('fichas.show', compact('ficha'));
     }
 
     /**
@@ -55,15 +54,21 @@ class FichaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ficha = Ficha::findOrFail($id);
+        $sedes = Sede::all();
+        $jornadas = Jornada::all();
+        return view('fichas.edit', compact('ficha', 'sedes', 'jornadas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FichaRequest $request, string $id) // Use FichaRequest for validation
     {
-        //
+        $ficha = Ficha::findOrFail($id);
+        $ficha->update($request->validated()); // Use validated data
+
+        return redirect()->route('fichas.index')->with('success', 'Ficha actualizada exitosamente.');
     }
 
     /**
@@ -71,6 +76,9 @@ class FichaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ficha = Ficha::findOrFail($id);
+        $ficha->delete();
+
+        return redirect()->route('fichas.index')->with('success', 'Ficha eliminada exitosamente.');
     }
 }
