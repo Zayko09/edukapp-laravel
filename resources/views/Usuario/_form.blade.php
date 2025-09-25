@@ -103,7 +103,7 @@
                 <option value="">-- Selecciona --</option>
                 @foreach($fichas as $ficha)
                     <option value="{{ $ficha->ficha_id }}" @selected($val('ficha_id') == $ficha->ficha_id)>
-                        {{ $ficha->numero_ficha }}
+                        {{ $ficha->nombre_ficha }}
                     </option>
                 @endforeach
             </select>
