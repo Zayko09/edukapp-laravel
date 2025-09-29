@@ -11,40 +11,26 @@
                 </div>
 
                 <!-- Navigation Links -->
+                </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Inicio') }}
+                    <x-nav-link href="{{ route('sedes.index') }}" :active="request()->routeIs('sedes.*')">
+                        {{ __('Sedes') }}
+                     </x-nav-link>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('jornadas.index') }}" :active="request()->routeIs('jornadas.*')">
+                        {{ __('Jornadas') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('Usuario.index') }}" :active="request()->routeIs('usuario.*')">
                         {{ __('Usuario') }}
                     </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('fichas.index') }}" :active="request()->routeIs('fichas.*')">
-                        {{ __('Fichas') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('sedes.index') }}" :active="request()->routeIs('sedes.*')">
-                        {{ __('Sedes') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('carnets.index') }}" :active="request()->routeIs('carnets.*')">
+                               <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Carnets') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('registros_acceso.index') }}" :active="request()->routeIs('registros_acceso.*')">
-                        {{ __('Acceso') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('jornadas.index') }}" :active="request()->routeIs('jornadas.*')">
-                        {{ __('Jornadas') }}
-                    </x-nav-link>
+
                 </div>
             </div>
 
