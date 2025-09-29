@@ -41,12 +41,6 @@
                                 <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono</label>
                                 <input type="text" name="telefono" id="telefono" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                             </div>
-
-                            <!-- Logo URL -->
-                            <div>
-                                <label for="logo_url" class="block text-sm font-medium text-gray-700">URL del Logo</label>
-                                <input type="text" name="logo_url" id="logo_url" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                            </div>
                         </div>
 
                         <div class="mt-6 flex justify-end">
