@@ -155,27 +155,19 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('Usuario.index') }}" :active="request()->routeIs('usuario.*')">
-                {{ __('Usuario') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('fichas.index') }}" :active="request()->routeIs('fichas.*')">
-                {{ __('Fichas') }}
-            </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('sedes.index') }}" :active="request()->routeIs('sedes.*')">
                 {{ __('Sedes') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('carnets.index') }}" :active="request()->routeIs('carnets.*')">
-                {{ __('Carnets') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('registros_acceso.index') }}" :active="request()->routeIs('registros_acceso.*')">
-                {{ __(' Acceso') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('jornadas.index') }}" :active="request()->routeIs('jornadas.*')">
                 {{ __('Jornadas') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('Usuario.index') }}" :active="request()->routeIs('usuario.*')">
+                {{ __('Usuario') }}
+            </x-responsive-nav-link>
+                             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                {{ __('Carnets') }}
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
