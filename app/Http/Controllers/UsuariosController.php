@@ -40,9 +40,9 @@ class UsuariosController extends Controller
     {
         // Validation logic will be added in a custom request class.
         $data = $request->all();
-        // Password and salt handling should be implemented here.
-        // For now, let's assume plain text password for simplicity, but this is insecure.
-        $data['hash_contrasena'] = bcrypt($request->password); 
+        // If no password is provided, use the document number as the password.
+        $password = $request->filled('password') ? $request->password : $request->numero_documento;
+        $data['hash_contrasena'] = bcrypt($password);
         $data['salt_contrasena'] = ''; // Salt is handled by bcrypt
 
         Usuario::create($data);

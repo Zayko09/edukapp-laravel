@@ -30,7 +30,7 @@ class UsuarioRequest extends FormRequest
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'email' => 'required|email|unique:usuarios,email,' . $userId . ',usuario_id',
-            'password' => $userId ? 'nullable|string|min:8|confirmed' : 'required|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8|confirmed',
             'foto_url' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'activo' => 'boolean',
             'rol_id' => 'required|exists:roles,rol_id',
