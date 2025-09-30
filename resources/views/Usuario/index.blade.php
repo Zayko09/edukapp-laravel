@@ -26,7 +26,6 @@
                                 <th>Documento</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
-                                <th>Sede</th>
                                 <th>Activo</th>
                                 <th>Acciones</th>
                             </tr>
@@ -37,7 +36,6 @@
                                     <td>{{ $usuario->numero_documento }}</td>
                                     <td>{{ $usuario->nombre }} {{ $usuario->apellido }}</td>
                                     <td>{{ $usuario->email }}</td>
-                                    <td>{{ $usuario->sede->nombre_sede ?? 'N/A' }}</td>
                                     <td>{{ $usuario->activo ? 'Sí' : 'No' }}</td>
                                     <td class="flex items-center gap-2">
                                         <a href="{{ route('Usuario.edit', $usuario) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
