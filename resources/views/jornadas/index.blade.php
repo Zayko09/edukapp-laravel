@@ -27,8 +27,6 @@
                                 <tr>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nombre Jornada</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Fichas</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Usuarios</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Creado</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Acciones</th>
                                 </tr>
@@ -115,8 +113,6 @@
                 "columns": [
                     { "data": "jornada_id" },
                     { "data": "nombre_jornada" },
-                    { "data": "fichas_count" },
-                    { "data": "usuarios_count" },
                     { "data": "created_at" },
                     { "data": "acciones", "orderable": false, "searchable": false }
                 ],
